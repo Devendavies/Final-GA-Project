@@ -1,44 +1,69 @@
-'use strict';
+'use strict'
+const key = 8fa8fbd8-e1de-4895-bcd6-1b1577547aae;
 
 $(function(){
+
   console.log('javascript LOADED!');
-  // let socket = io();
-  let facepageTemplate = Handlebars.compile($('template#facepage').html());
-  let renderChampTemplate = Handlebars.compile($('template#champ-select').html());
-  let renderFeedTemplate = Handlebars.compile($('template#champ-feed').html());
 
-  let renderChamps = function(data){
-    console.log('render champs clicked!')
-    console.log(data);
-    let champTemplate = renderChampTemplate({champ: data});
-    $('.results').empty().append(champTemplate);
+  let renderFacepageTemplate = Handlebars.compile($('template#facepage').html()),
+  let renderChampTemplate = Handlebars.compile($('template#champ-select').html()),
+  let renderFeedTemplate = Handlebars.compile($('template#champ-feed').html()),
+
+  // Api authentication key
+  const API_KEY = key;
+
+  let requestURL     = 'https://na.api.pvp.net/api/lol/na/v1.4/',
+  // Check League Servers Status
+  let leagueStatus   = 'status.leagueoflegends.com';
+
+  // Site Intro Page
+  let facepage = function(){
+    let faceIt = renderFacepageTemplate();
+    $('.results').empty().append(faceIt);
   };
 
-  let getChamps = function(e){
-    e.preventDefault();
+  // Send All Champ's Data to page
+  let listEm = function(){
+    let champIt = renderChampTemplate();
+    $('.results').empty().append(champIt);
+  }
+
+  // Request All Champions from the api
+  let getChamps = function(){
     $.ajax({
-      url: '/champ-select',
-      method: 'GET',
-      dataType: 'json'
-    }).done(renderChamps)
-  };
+        url: requestURL + 'champion',
+        type: 'GET',
+      }).done(listEm)
+    };
+  }
 
-  let createSurvey = function(e){
-    e.preventDefault();
-    alert('Survey Created! Poll baby poll!');
-    var surveyData = {
-      topic: $('#new_topic').val(),
-      description: $('#new_description').val(),
-    }
-    console.log(surveyData);
+  // Champion Profile Page
+  let listOne = function(){
+    let onlyOne = renderFeedTemplate();
+    $('.results').empty().append(onlyOne);
+  }
+
+  // Request Specific Champion Data
+  let perChamp = function(){
+    champ = $("#champion").val();
     $.ajax({
-      url: 'surveys',
-      type: 'POST',
-      data: surveyData
-    }).done()
-  };
+        url: requestURL + 'champion/' + champ + '?api_ke=' + API_KEY,
+        type: 'GET',
+        dataType: 'json',
+        data {
 
-//body click events
-  $('.show_users').on('click', getUsers);
-  $('body').on('click', '#', function);
+        },
+        success: function (json) {
+
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error getting Champion data!");
+      }).done(listOne)
+    };
+  }
+
+
+// Click events
+  $('.enter').on('click', getChamps);
+  $('.champion-tile').on('click', perChamp);
 });

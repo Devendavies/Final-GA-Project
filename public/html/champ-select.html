@@ -49,16 +49,41 @@
 
 
 <!-- Show All Champion Tiles OR Searched T/iles -->
-<section ng-controller="champion_profileController as champions">
+<section ng-controller="champion_profileController as champions" ng-init="loadImages()">
 
   <ul>
-    <div ng-repeat="champ in champions.all" class="champion-tile">
+    <div ng-repeat="champ in champions.all" ng-if="$index % 4 === 0" class="row champion-tile">
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 1].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 2].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 3].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 4].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 5].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 6].src}}" width="48%" />
+      </div>
+      <div class="col col-25" ng-if="$index < champions.all.length">
+          <img ng-src="{{champions.all[$index + 7].src}}" width="48%" />
+      </div>
+
 
       <li>
-        <champ image={{ champ.image }} name={{ champ.name }}></champ>
+        <a href="/champs/{{champ.name}}"><champ image={{ champ.image }} name={{ champ.name }}></champ></a>
       </li>
 
     </div>
   </ul>
-
+  
 </section>
