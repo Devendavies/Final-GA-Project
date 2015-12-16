@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use('/scripts', express.static(__dirname + '/node_modules'))
 app.use(routes);
 
+// Server
 const server = app.listen(3000, () => {
   console.log('Server running')
 })

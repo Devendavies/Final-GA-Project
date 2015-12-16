@@ -1,69 +1,63 @@
 'use strict'
-const key = 8fa8fbd8-e1de-4895-bcd6-1b1577547aae;
 
-$(function(){
+console.log('APP LOADED'); // Test
 
-  console.log('javascript LOADED!');
+//------------------------------------
+// Controllers Injection
+//------------------------------------
 
-  let renderFacepageTemplate = Handlebars.compile($('template#facepage').html()),
-  let renderChampTemplate = Handlebars.compile($('template#champ-select').html()),
-  let renderFeedTemplate = Handlebars.compile($('template#champ-feed').html()),
+ChampionController.$inject = ['$http'];
+// FeedController.$inject = ['$http'];
 
-  // Api authentication key
-  const API_KEY = key;
+//-------------------------------------------------------------------------
+//                         Template/Handlebar Actions
+//-------------------------------------------------------------------------
 
-  let requestURL     = 'https://na.api.pvp.net/api/lol/na/v1.4/',
+$(document).ready(function(){
+
+  console.log('javascript LOADED!'); // Test
+
+  //  let renderChampTemplate    = Handlebars.compile($('template#champions').html());
+  //  let renderFeedTemplate     = Handlebars.compile($('template#tweets').html());
+  //  let tempDiv                = $('#templates');
+
+   //------------------------------------
+   //        API Authentication
+   //------------------------------------
+
+  // LoL api
+
+  // const lolAPIKey = "8fa8fbd8-e1de-4895-bcd6-1b1577547aae"; // Secure with scope later
+  // let API_KEY = '?api_key=' + lolAPIKey;  // Format for Leauge API URL
+  // let requestUrl     = 'https://na.api.pvp.net/api/lol/static-data/{region}/v1.2/versions/champion';
+
+  // 3rd Party LoL Data Host Option
+  // let requestUrl = 'http://ddragon.leagueoflegends.com/cdn/5.24.2/data/en_US/champion';
+
   // Check League Servers Status
-  let leagueStatus   = 'status.leagueoflegends.com';
+  // let leagueStatus   = 'status.leagueoflegends.com';
+
+  //------------------------------------
+  //         Global Functions
+  //------------------------------------
 
   // Site Intro Page
-  let facepage = function(){
-    let faceIt = renderFacepageTemplate();
-    $('.results').empty().append(faceIt);
+  let renderFacepage = function(){
+    let resultDiv = $(".horizontal")
+    let template = Handlebars.compile($('#facepage-template').html());
+    resultDiv.empty().append(template);
   };
 
-  // Send All Champ's Data to page
-  let listEm = function(){
-    let champIt = renderChampTemplate();
-    $('.results').empty().append(champIt);
-  }
+  renderFacepage(); // Initialize With Template
 
-  // Request All Champions from the api
-  let getChamps = function(){
-    $.ajax({
-        url: requestURL + 'champion',
-        type: 'GET',
-      }).done(listEm)
-    };
-  }
+  //------------------------------------
+  //           Click Events
+  //------------------------------------
+  $('body').on('click', '.goToFacepage',   renderFacepageTemplate);
+  $('body').on('click', '.enter',         renderChampTemplate);
+  $('body').on('click', '.champion-tile', renderFeedTemplate);
+  // $('.goToFacepage').on('click',  renderFacepageTemplate);
+  // $('.enter').on('click',         renderChampTemplate);
+  // $('.champion-tile').on('click', renderFeedTemplate);
 
-  // Champion Profile Page
-  let listOne = function(){
-    let onlyOne = renderFeedTemplate();
-    $('.results').empty().append(onlyOne);
-  }
-
-  // Request Specific Champion Data
-  let perChamp = function(){
-    champ = $("#champion").val();
-    $.ajax({
-        url: requestURL + 'champion/' + champ + '?api_ke=' + API_KEY,
-        type: 'GET',
-        dataType: 'json',
-        data {
-
-        },
-        success: function (json) {
-
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("error getting Champion data!");
-      }).done(listOne)
-    };
-  }
-
-
-// Click events
-  $('.enter').on('click', getChamps);
-  $('.champion-tile').on('click', perChamp);
 });

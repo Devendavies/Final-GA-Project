@@ -1,27 +1,33 @@
 'use strict';
+
 //route requirements and secret
 let express = require('express');
 let mongoose = require('mongoose');
-let routes = express.Router();
+let router = express.Router();
 let Champ = require('../models/champ.js');
 
-routes.route('/')
+angular.module('lol-champ-feed', [])
+  .controller('ChampionController', ChampionController)
+
+router.route('/')
 // retrieve all champions
 .get((req, res, next) => {
-  Survey.find({}, (err, champions) => {
+  Champion.find({}, (err, champions) => {
   if(err) throw err;
   console.log(champions.name);
-  res.send(champions.name);
+  res.send(champions);
   });
 });
 
+
 //route using specific name
-routes.route('/:name')
+router.route('/:name')
 //retrieve and display a champion based on its name param
 .get(function(req, res, next) {
-  Survey.findByName(req.params.name).exec(function(err, champ){
+  Champion.findByName(req.params).exec(function(err, champ){
     if(err) throw err;
-  res.send(champ.name);
+    console.log(champ)
+    res.send(champ);
   });
 })
 
