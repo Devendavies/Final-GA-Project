@@ -1,12 +1,11 @@
 'use strict'
 
 console.log('APP LOADED'); // Test
-
 //------------------------------------
 // Controllers Injection
 //------------------------------------
 
-ChampionController.$inject = ['$http'];
+// ChampionController.$inject = ['$http'];
 // FeedController.$inject = ['$http'];
 
 //-------------------------------------------------------------------------
@@ -17,9 +16,9 @@ $(document).ready(function(){
 
   console.log('javascript LOADED!'); // Test
 
-  //  let renderChampTemplate    = Handlebars.compile($('template#champions').html());
+  // MOVE TO CHAMP FEED CONTROLLER
   //  let renderFeedTemplate     = Handlebars.compile($('template#tweets').html());
-  //  let tempDiv                = $('#templates');
+  // $('body').on('click', '.champion-tile', renderFeedTemplate);
 
    //------------------------------------
    //        API Authentication
@@ -53,11 +52,15 @@ $(document).ready(function(){
   //------------------------------------
   //           Click Events
   //------------------------------------
-  $('body').on('click', '.goToFacepage',   renderFacepageTemplate);
-  $('body').on('click', '.enter',         renderChampTemplate);
-  $('body').on('click', '.champion-tile', renderFeedTemplate);
-  // $('.goToFacepage').on('click',  renderFacepageTemplate);
-  // $('.enter').on('click',         renderChampTemplate);
-  // $('.champion-tile').on('click', renderFeedTemplate);
 
+  $('body').on('click', '.goToFacepage',  renderFacepage); // change 'body'
+});
+
+$(function() {
+  console.log("loaded");
+  $('.champ-select').on('click', function(){
+    console.log("Champ Select Button Pressed");
+    ChampionController.getChamps();
+  });
+  console.log("end click event")
 });

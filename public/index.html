@@ -13,7 +13,7 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
   <head>
     <meta charset="utf-8">
     <title> Champion Shouts </title>
-    <link  type="text/css" href="/css/style.css" media="screen" charset="utf-8" rel="stylesheet">                        </link>
+    <link  type="text/css" href="/css/style.css" media="screen" charset="utf-8" rel="stylesheet">       </link>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">                     </script>
     <!-- MaterializeCSS -->
@@ -23,8 +23,8 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
     <!-- Local file additions -->
     <!-- <script type="text/javascript" src="js/FeedController"></script> -->
-    <script type="text/javascript" src="js/ChampionController.js"></script>
     <script type="text/javascript" src="js/app.js" ></script>
+    <script type="text/javascript" src="js/ChampionController.js"></script>
     <!-- <script src="js/champion_feedController.js"></script> -->
   </head>
 
@@ -35,7 +35,6 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
 
 
     <div class="hamburger"></div>
-    <button class="goToFacepage"></button>
 
     <!-- GREETING PAGE -->
 
@@ -54,33 +53,25 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
 
         <div class="faceBio">
           <article>
-            Purpose of this site goeth here!
+            Welcome to League of Tweets, where all your wildest... ummm, champion tweets are viewed? View your favorite champion and see what some of the latest tweets about him/her/it are! Feeling salty about that last loss because heimer killed you while afk due to op turrets?? Let the world know and maybe, just maybe, good ol Rito might just listen. May the patches be ever in your favor!
           </article>
         </div>
 
-        <button class="btn waves-effect waves-teal enter" href="/champions"> Champions </button>
+        <button class="btn waves-effect waves-teal champ-select"> Champions </button>
 
       </div>
     </template>
 
       <!--  SHOW ALL CHAMPIONS -->
-        <!-- <template id="allChamps"></template> -->
+    <template id="allChamps">
       <div class='allChamps'>
         <div class="free-champ-rotation">
-          <span>
-
-              <ul>
-                <div class="free-champ-tiles">
-                  <li>
-                    <img src="" + {{ name }}>
-                  </li>
-                </div>
-              </ul>
-
-          </span>
+          <image src='http://na.leagueoflegends.com/sites/default/files/styles/scale_xlarge/public/upload/lol.com_.banner.article.f2protation.14dec.jpg?itok=WkaY9dPy' placeholder="SHTUFF"></image>
         </div>
 
         <h1> CHAMPIONS </h1>
+
+        <button class="goToFacepage"></button>
 
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Select Role</a>
@@ -110,14 +101,19 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
         </form>
 
 
-
         <!-- Show All Champion Tiles OR Searched T/iles -->
+        <script type="template" id="champion-tile-template">
+        <div class="tiles">
+          <img src="{{ image }}" class="champion-tile"/>
+          <p> {{ name }} <p>
+        </div>
+        </script>
 
-
-
+      </template>
 
       <!-- Show Champion and Related Tweets -->
         <!-- <template id="ChampionTweets"></template> -->
+        <!-- <button class="goToFacepage"></button>    -->
 
 
   </body>
