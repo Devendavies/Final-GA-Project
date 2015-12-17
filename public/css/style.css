@@ -1,4 +1,8 @@
 /* Intro Page */
+.facepage {
+  margin-bottom: 500px;
+}
+
 .faceTitle p {
   padding-top: 3px;
   margin-bottom: 5px;
@@ -98,4 +102,35 @@
 
 .goToFacepage {
   margin-left: 150px;
+}
+
+.tweets {
+  color: #D6AA45;
+}
+
+img.prof-pic {
+  border-style: inset;
+
+  border-radius: 20px;
+  margin-left: 30px;
+}
+
+img.stats {
+  margin-left: 20px;
+  margin-bottom: 200px;
+}
+
+.tweets img {
+  border-width: medium;
+  border-color: grey;
+  border-style: dotted;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  margin-left: 38%;
+  width: 550px;
+}
+
+.championProfile {
+  position: absolute;
+  top: 2500px;
 }

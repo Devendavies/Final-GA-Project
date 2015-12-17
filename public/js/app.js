@@ -45,9 +45,8 @@ $(document).ready(function(){
     let resultDiv = $(".horizontal");
     let template = Handlebars.compile($('#facepage-template').html());
 
-    // let champAll = $(".returns-div");
     // let champDiv = $(".relays-div");
-    // champAll.empty();
+    ('div').empty;
     // champDiv.empty();
 
     resultDiv.empty().append(template);
@@ -86,20 +85,18 @@ $(function() {
   });
 });
 
-// PROFILE
-// $(function() {
-//   console.log("click profile loaded");
-//   $('.champ-select').on('click', function(){
-//
-//     let resultDiv = $(".horizontal");
-//     let champDiv = $(".returns-div");
-//     resultDiv.empty();
-//     champDiv.empty();
-//
-//     let championProfile = $(".relays-div");
-//     let template = Handlebars.compile($('#twitterFeed').html());
-//     championProfile.empty().append(template);
-//
-//     let champion = "Amumu";
-//   });
-// });
+// Profile
+$(function() {
+  console.log("click profile loaded");
+  $('#humpa').on('click', function(){
+
+    resultDiv = $(".returns-div");
+    resultDiv.empty();
+
+    let championProfile = $(".relays-div");
+    let template = Handlebars.compile($('#twitterFeed').html());
+    championProfile.empty().append(template);
+
+    let champion = "Amumu";
+  });
+});
