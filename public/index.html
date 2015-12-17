@@ -39,26 +39,39 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
     <!-- GREETING PAGE -->
 
     <div class="results-div">
-      <div class="horizontal"></div>
+
+      <div class="background">
+        <img src="http://na.leagueoflegends.com/sites/default/files/styles/scale_large/public/upload/art/shadow_isles_1920x1080.jpg?itok=unIyEbM7"></image>
+      </div>
+
+      <div class="horizontal"> </div>
+
     </div>
 
+    <div class="returns-div"> </div>
+
+    <div class="relays-div"></div>
+
     <template id="facepage-template">
-      <div class="facepage">
+      <div class="face-container">
+        <div class="facepage">
 
-        <div class="faceTitle">
-          <span><h1> League<h1> <p>of</p></span>
-          <h1>Tweets </h1>
-          <p> Featuring LoL API </p>
+          <div class="backbox"></div>
+
+          <div class="faceTitle">
+            <span><h1> League  <span style='font-size: 14px; color: red'> of </span>Tweets </h1>
+            <p> (Featuring LoL and Twitter API) </p>
+          </div>
+
+          <div class="faceBio">
+            <article>
+              <p> Welcome to League of Tweets, where all your wildest... ummm, champion tweets are viewed? View your favorite champion and see what some of the latest tweets about him/her/it are! Feeling salty about that last loss because heimer killed you while afk due to op turrets?? Let the world know and maybe, just maybe, good ol Rito might just listen. May the patches be ever in your favor! </p>
+            </article>
+          </div>
+
+          <button class="btn waves-effect waves-teal champ-select"> Champions </button>
+
         </div>
-
-        <div class="faceBio">
-          <article>
-            Welcome to League of Tweets, where all your wildest... ummm, champion tweets are viewed? View your favorite champion and see what some of the latest tweets about him/her/it are! Feeling salty about that last loss because heimer killed you while afk due to op turrets?? Let the world know and maybe, just maybe, good ol Rito might just listen. May the patches be ever in your favor!
-          </article>
-        </div>
-
-        <button class="btn waves-effect waves-teal champ-select"> Champions </button>
-
       </div>
     </template>
 
@@ -66,16 +79,27 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
     <template id="allChamps">
       <div class='allChamps'>
         <div class="free-champ-rotation">
+          <h2> Free To Play! </h2>
           <image src='http://na.leagueoflegends.com/sites/default/files/styles/scale_xlarge/public/upload/lol.com_.banner.article.f2protation.14dec.jpg?itok=WkaY9dPy' placeholder="SHTUFF"></image>
         </div>
 
         <h1> CHAMPIONS </h1>
+      </div>
 
-        <button class="goToFacepage"></button>
+      <!-- Champion Search -->
+      <div class="nav">
+        <form>
+          <div class="input-field">
+            <input type="search" id="search-field" class="field" required maxlength="">
+            <label for="search-field"><i class="mdi-action-search"></i></label>
+            <i class="mdi-navigation-close close"></i>
+          </div>
+        </form>
 
-        <!-- Dropdown Trigger -->
-        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Select Role</a>
+        <button class="goToFacepage btn"> Intro </button>
 
+          <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1'> Select Role </a>
         <!-- Dropdown Structure -->
         <div class="role-dropdown">
           <ul id='dropdown1' class='dropdown-content'>
@@ -89,31 +113,34 @@ $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstok
             <li><a href="#support">Support</a></li>
           </ul>
         </div>
+      </div>
 
-        <!-- Champion Search -->
+    </template>
 
-        <form>
-        	<div class="input-field">
-        		<input type="search" id="search-field" class="field" required maxlength="">
-        		<label for="search-field"><i class="mdi-action-search"></i></label>
-        		<i class="mdi-navigation-close close"></i>
-        	</div>
-        </form>
-
-
-        <!-- Show All Champion Tiles OR Searched T/iles -->
-        <script type="template" id="champion-tile-template">
+      <!-- Show All Champion Tiles OR Searched T/iles -->
+      <script type="template" id="champion-tile-template">
         <div class="tiles">
           <img src="{{ image }}" class="champion-tile"/>
-          <p> {{ name }} <p>
         </div>
-        </script>
-
-      </template>
+      </script>
 
       <!-- Show Champion and Related Tweets -->
         <!-- <template id="ChampionTweets"></template> -->
         <!-- <button class="goToFacepage"></button>    -->
+        <template id="twitterFeed">
+          <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large red">
+              <i class="large mdi-navigation-menu"></i>
+            </a>
+            <ul>
+              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            </ul>
+          </div>
+        </template>
+
 
 
   </body>

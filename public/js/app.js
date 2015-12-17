@@ -42,8 +42,14 @@ $(document).ready(function(){
 
   // Site Intro Page
   let renderFacepage = function(){
-    let resultDiv = $(".horizontal")
+    let resultDiv = $(".horizontal");
     let template = Handlebars.compile($('#facepage-template').html());
+
+    // let champAll = $(".returns-div");
+    // let champDiv = $(".relays-div");
+    // champAll.empty();
+    // champDiv.empty();
+
     resultDiv.empty().append(template);
   };
 
@@ -57,10 +63,43 @@ $(document).ready(function(){
 });
 
 $(function() {
-  console.log("loaded");
+  console.log("click event loaded");
   $('.champ-select').on('click', function(){
     console.log("Champ Select Button Pressed");
     ChampionController.getChamps();
+    console.log("end click event")
   });
-  console.log("end click event")
 });
+
+$(function() {
+  console.log("click backup loaded");
+  $('.champ-select').on('click', function(){
+
+    let resultDiv = $(".horizontal");
+    // let champDiv = $(".relays-div");
+    resultDiv.empty();
+    // champDiv.empty();
+
+    resultDiv = $(".returns-div");
+    let template = Handlebars.compile($('#allChamps').html());
+    resultDiv.append(template);
+  });
+});
+
+// PROFILE
+// $(function() {
+//   console.log("click profile loaded");
+//   $('.champ-select').on('click', function(){
+//
+//     let resultDiv = $(".horizontal");
+//     let champDiv = $(".returns-div");
+//     resultDiv.empty();
+//     champDiv.empty();
+//
+//     let championProfile = $(".relays-div");
+//     let template = Handlebars.compile($('#twitterFeed').html());
+//     championProfile.empty().append(template);
+//
+//     let champion = "Amumu";
+//   });
+// });
